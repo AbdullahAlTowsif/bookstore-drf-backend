@@ -55,14 +55,25 @@ from rest_framework import status
 #         return Response(status=status.HTTP_204_NO_CONTENT)
 
 # Method 2: Concrete API VIEW | Generic Class View
-from rest_framework import generics
+# from rest_framework import generics
 
 
-class BookListCreateAPIView(generics.ListCreateAPIView):
-    queryset = BookStoreModel.objects.all()
-    serializer_class = BookStoreSerializer
+# class BookListCreateAPIView(generics.ListCreateAPIView):
+#     queryset = BookStoreModel.objects.all()
+#     serializer_class = BookStoreSerializer
 
 
-class BookRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+# class BookRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = BookStoreModel.objects.all()
+#     serializer_class = BookStoreSerializer
+
+# Method 3: Viewset and Router
+from rest_framework import viewsets
+
+
+class BookViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list` and `retrieve` actions.
+    """
     queryset = BookStoreModel.objects.all()
     serializer_class = BookStoreSerializer
